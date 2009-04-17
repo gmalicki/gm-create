@@ -71,7 +71,8 @@ end
 # connect to gmail, cache the captcha image
 def gmail_account_init first_name, last_name, login, pass
   agent = new_agent
-  page = agent.get(NEW_ACCOUNT_URL).links.detect { |l| l.text =~ /Create an account/ }.click  
+  page = agent.get(NEW_ACCOUNT_URL)
+  page = page.links.detect { |l| l.text =~ /Create an account/ }.click  
   remote_captcha_url = page.search('//img')[5].attributes['src']
   local_captcha_url = sync_captcha_to_s3(remote_captcha_url)
   form = page.forms.last
