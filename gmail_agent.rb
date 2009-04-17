@@ -101,6 +101,7 @@ def gmail_account_create
   form_data[:form]['PersistentCookie'] = 'yes'
   agent = new_agent
   load_cookies(agent, form_data[:cookies])
+  raise agent.cookie_jar.inspect
   page2 = agent.post(form_data[:url], form_data[:form])
   if page2.body =~ /The characters you entered/i
     raise "bad captcha".inspect
