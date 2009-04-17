@@ -101,7 +101,6 @@ def gmail_account_create
   form_data[:form]['PersistentCookie'] = 'yes'
   agent = new_agent
   load_cookies(agent, form_data[:cookies])
-  raise agent.cookie_jar.inspect
   page2 = agent.post(form_data[:url], form_data[:form])
   if page2.body =~ /The characters you entered/i
     raise "bad captcha".inspect
@@ -110,6 +109,6 @@ def gmail_account_create
 end
 
 case ARGV.first
-when "init" : gmail_account_init("dkjeru", "markffus", "dkjef#{rand(31337)}", "janewayjaneway")
+when "init" : gmail_account_init("dkdffu", "mefdfus", "dfjkd#{rand(31337)}", "janewayjaneway")
 when "create" : gmail_account_create
 end
